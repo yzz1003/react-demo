@@ -1,20 +1,32 @@
 import { useEffect, useState } from "react";
-import { Button, Table, TableProps, message } from "antd";
+import { Button, message, Table, TableProps } from "antd";
 import { createUser, delUser, userList } from "../../api/module/user";
+import { UserInfoDto } from "../../api/interface/xxOpenTypeApi";
+import style from "./index.module.css";
+
 const User = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<UserInfoDto[]>([]);
+  const [total, setTotal] = useState(0);
+  const [model, setModel] = useState({
+    page: 1,
+    take: 10,
+  });
   const init = () => {
-    userList()
+    userList(model)
       .then((res) => {
-        setList(res);
+        setList(res.data);
+        setTotal(res.meta.itemCount);
       })
       .catch((e) => console.log(e));
   };
   useEffect(() => {
-    console.log("profile 组件初始化");
     init();
-  }, []);
+  }, [model]);
 
+  const onchange = (params) => {
+    console.log(params);
+    setModel({ page: params.current, take: params.pageSize });
+  };
   const deleteUser = (id: number) => {
     delUser(id)
       .then((res) => {
@@ -55,6 +67,7 @@ const User = () => {
         );
       },
     },
+    {},
   ];
   return (
     <div>
@@ -75,18 +88,15 @@ const User = () => {
       >
         创建用户
       </a>
-      <Table rowKey="id" columns={columns} dataSource={list}></Table>
-      {/* 用户 */}
-      <div>
-        {/* {list?.map((item, index) => (
-          <div key={index}>
-            {item.id}
-            {item.name}
-            {item.email}
-          </div>
-        ))}
-        <progress value={0.2} /> */}
-      </div>
+      <Table
+        rootClassName={style.aaaa}
+        rowKey="id"
+        columns={columns}
+        dataSource={list}
+        pagination={{ total }}
+        onChange={onchange}
+      ></Table>
+      <div className={style.aaa}>111</div>
     </div>
   );
 };

@@ -1,13 +1,14 @@
 import { Layout } from "antd";
-import { Header, Content, Footer } from "antd/es/layout/layout";
+import { Content, Footer, Header } from "antd/es/layout/layout";
 import { Outlet } from "react-router-dom";
 import LayoutHeader from "../../component/Header";
 import { useEffect } from "react";
 
 const Home = () => {
   useEffect(() => {
-    console.log("home组件初始化")
-  },[])
+    console.log("home组件初始化");
+    console.log(import.meta.env);
+  }, []);
   return (
     <Layout>
       <Header style={{ padding: 0 }}>

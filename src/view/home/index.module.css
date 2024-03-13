@@ -1,0 +1,26 @@
+.wrapper {
+    height: 100px;
+    display: flex;
+    background: #535bf2;
+    align-items: flex-end;
+}
+
+.item {
+    padding: 10px 40px;
+    margin: 0 -20px;
+    cursor: pointer;
+    transition: 0.3s background-color;
+    -webkit-mask-box-image: url("data:image/svg+xml,%3Csvg width='67' height='30' viewBox='0 0 67 33' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M27 0c-6.627 0-12 5.373-12 12v6c0 16.284-6.716 15-15 15h67c-8.284 1-15-6.716-15-15v-6c0-6.627-5.373-12-12-12H27z' fill='%23F8EAE7'/%3E%3C/svg%3E") 12 27 15;
+
+}
+
+.item-active {
+    background: #fff;
+    transition: 1s color;
+    position: relative;
+    z-index: 10;
+}
+
+.item:hover {
+    background: #eee;
+}

@@ -6,7 +6,7 @@ export default function Request() {
   RequestHttp.interceptors.request.use(
     function (config) {
       NProgress.start();
-      console.log(config)
+      console.log(config);
       // Do something before request is sent
       return config;
     },
@@ -19,7 +19,7 @@ export default function Request() {
   // Add a response interceptor
   RequestHttp.interceptors.response.use(
     function (response) {
-      console.log(response)
+      console.log(response);
       NProgress.done();
       // Any status code that lie within the range of 2xx cause this function to trigger
       // Do something with response data
@@ -28,6 +28,8 @@ export default function Request() {
     function (error) {
       // Any status codes that falls outside the range of 2xx cause this function to trigger
       // Do something with response error
+      NProgress.done();
+      console.dir()
       return Promise.reject(error);
     },
   );

@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../view/home";
 import { lazy } from "react";
-import User from "../view/user";
 import lazyLoad from "./utils/LazyLoad";
+import Index from "../view/home/component/Index.tsx";
+
 const router = createBrowserRouter(
   [
     {
@@ -13,11 +14,7 @@ const router = createBrowserRouter(
         {
           path: "",
           index: true,
-          element: (
-            <div>
-              <h1>111</h1>
-            </div>
-          ),
+          element: <Index></Index>,
         },
         {
           path: "about",

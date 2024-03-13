@@ -1,0 +1,10 @@
+.aaa {
+    color: #1677ff;
+}
+
+:global {
+    .ant-layout {
+        color: #1677ff;
+        width: 100px;
+    }
+}
